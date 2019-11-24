@@ -106,15 +106,20 @@ class Loader
         $document = $this->getDocument($url, $format);
         $data = $document->getData();
 
+        $this->postProcess($data, $document->getBaseUrl(), $root);
+
+        return $data;
+    }
+
+    public function postProcess(array &$data, string $baseUrl, array $root): void
+    {
         $merged = array_merge_recursive($data, $root);
-        $this->applyReferences($data, $document->getBaseUrl(), $merged);
+        $this->applyReferences($data, $baseUrl, $merged);
 
         $merged = array_merge_recursive($data, $root);
         $this->applyVariables($data, $merged);
 
         $this->applyStrip($data);
-
-        return $data;
     }
 
     protected function applyStrip(array &$data) {
