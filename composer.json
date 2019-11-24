@@ -1,0 +1,35 @@
+{
+  "name": "linkorb/loader",
+  "description": "Loader: generic data/config loader with advanced features",
+  "homepage": "https://github.com/linkorb/loader",
+  "keywords": ["loader", "linkorb"],
+  "type": "library",
+  "authors": [
+    {
+      "name": "Joost Faassen",
+      "email": "j.faassen@linkorb.com",
+      "role": "Development"
+    }
+  ],
+  "require": {
+    "colinodell/json5": "^2.0",
+    "guzzlehttp/guzzle": "^6.0",
+    "psr/log": "^1.0",
+    "symfony/expression-language": "^3.0|^4.0",
+    "symfony/yaml": "^3.0|^4.0"
+  },
+  "require-dev": {
+    "monolog/monolog": "^2.0",
+    "phpunit/phpunit": "^7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Loader\\": "src/"
+    }
+  },
+  "license": "MIT",
+  "bin": ["bin/stamp"],
+  "config": {
+    "sort-packages": true
+  }
+}
