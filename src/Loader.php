@@ -25,6 +25,11 @@ class Loader
         $this->logger = $logger;
     }
 
+    public function getInterpolator()
+    {
+        return $this->interpolator;
+    }
+
     public static function create(array $options)
     {
         $flags = $options['flags'] ?? 0;
