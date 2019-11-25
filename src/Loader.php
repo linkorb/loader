@@ -127,7 +127,7 @@ class Loader
         $this->applyStrip($data);
     }
 
-    protected function applyStrip(array &$data) {
+    public function applyStrip(array &$data) {
 
         foreach ($data as $key => &$value) {
             if ($key==='$strip') {
@@ -145,10 +145,9 @@ class Loader
         }
     }
 
-    protected function applyReferences(array &$data, string $baseUrl, array $root)
+    public function applyReferences(array &$data, string $baseUrl, array $root)
     {
         foreach ($data as $key => &$value) {
-
             if (is_array($value)) {
                 $this->applyReferences($value, $baseUrl, $root);
             } else {
