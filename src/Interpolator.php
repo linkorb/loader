@@ -78,8 +78,8 @@ class Interpolator
         return $obj;
     }
 
-    public function interpolate(string $str, array $variables) {
-        preg_match_all('/\{\{(.*?)\}\}/i', $str, $matches, PREG_PATTERN_ORDER);
+    public function interpolate(string $str, array $variables, $regex = '/\{\{(.*?)\}\}/i') {
+        preg_match_all($regex, $str, $matches, PREG_PATTERN_ORDER);
         for ($i = 0; $i < count($matches[1]); $i++) {
             $expression = trim($matches[1][$i]);
 
@@ -91,10 +91,10 @@ class Interpolator
             // evaluate
             $res = $this->expressionLanguage->evaluate($expression, $variables2);
             if ($matches[0][$i] == $str) {
-                // if the entire value is an expression, replace the output entirely
+                // if the entire value is the expression, replace the output entirely
                 $str = $res;
             } else {
-                // only replace the templated part
+                // only replace the templated part(s)
                 $str = str_replace($matches[0][$i], $res, $str);
             }
         }
