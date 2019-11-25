@@ -28,7 +28,6 @@
     }
   },
   "license": "MIT",
-  "bin": ["bin/stamp"],
   "config": {
     "sort-packages": true
   }
