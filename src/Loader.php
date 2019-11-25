@@ -119,6 +119,9 @@ class Loader
     public function postProcess(array &$data, string $baseUrl, array $root): void
     {
         $merged = array_merge_recursive($data, $root);
+
+        // Apply references twice, to support references to references
+        $this->applyReferences($data, $baseUrl, $merged);
         $this->applyReferences($data, $baseUrl, $merged);
 
         $merged = array_merge_recursive($data, $root);
