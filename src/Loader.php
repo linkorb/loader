@@ -176,7 +176,7 @@ class Loader
     }
 
 
-    protected function applyVariables(array &$data, $root)
+    public function applyVariables(array &$data, $root)
     {
         foreach ($data as $key => &$value) {
 
