@@ -151,6 +151,10 @@ class Loader
     public function applyReferences(array &$data, string $baseUrl, array $root)
     {
         foreach ($data as $key => &$value) {
+            if (is_object($value)) {
+                // force objects to become arrays
+                $value = json_decode(json_encode($value), true);
+            }
             if (is_array($value)) {
                 $this->applyReferences($value, $baseUrl, $root);
             } else {
